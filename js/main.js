@@ -6,6 +6,98 @@ $(document).ready(function () {
     getHitokoto();
 });
 
+$('#fold').click(function () {
+    $('body').toggleClass('folded');
+    var $i = $(this).find('i');
+    if ($('body').hasClass('folded')) {
+        $i.removeClass('fa-compress').addClass('fa-expand');
+    } else {
+        $i.removeClass('fa-expand').addClass('fa-compress');
+    }
+});
+
+// 音量控制：滑块 0-100%，localStorage 持久化
+var savedVol = 0;
+try {
+    var s = localStorage.getItem('bgVideoVolume');
+    if (s !== null) savedVol = parseFloat(s);
+} catch(e) {}
+
+function updateVolumeIcon(vol) {
+    var $i = $('#volume i');
+    $i.removeClass('fa-volume-off fa-volume-down fa-volume-up');
+    if (vol === 0) $i.addClass('fa-volume-off');
+    else if (vol <= 0.3) $i.addClass('fa-volume-down');
+    else $i.addClass('fa-volume-up');
+}
+
+function setVolume(val) {
+    val = Math.max(0, Math.min(1, val));
+    bv.videoEl.volume = val;
+    bv.videoEl.muted = (val === 0);
+    $('#volume-slider').val(Math.round(val * 100));
+    updateVolumeIcon(val);
+    if (val > 0) {
+        savedVol = val;
+        try { localStorage.setItem('bgVideoVolume', val); } catch(e) {}
+    }
+}
+
+// Start muted (autoplay policy), slider shows saved position
+bv.videoEl.volume = 0;
+bv.videoEl.muted = true;
+$('#volume-slider').val(Math.round(savedVol * 100));
+updateVolumeIcon(0);
+
+$('#volume-slider').on('input', function () {
+    setVolume(this.value / 100);
+});
+
+$('#volume i').click(function (e) {
+    e.stopPropagation();
+    var cur = bv.videoEl.volume;
+    if (cur === 0) {
+        var restore = savedVol > 0 ? savedVol : 0.3;
+        setVolume(restore);
+    } else {
+        setVolume(0);
+    }
+});
+
+// Slider hover: JS timeout avoids gap between icon and slider
+var sliderTimer;
+$('#volume').on('mouseenter', function () {
+    clearTimeout(sliderTimer);
+    $('#volume-slider').show();
+}).on('mouseleave', function () {
+    sliderTimer = setTimeout(function () {
+        $('#volume-slider').hide();
+    }, 200);
+});
+$('#volume-slider').on('mouseenter', function () {
+    clearTimeout(sliderTimer);
+}).on('mouseleave', function () {
+    sliderTimer = setTimeout(function () {
+        $('#volume-slider').hide();
+    }, 200);
+});
+
+// 随机切换视频
+$('#shuffle').click(function () {
+    var url = videoUrls[Math.floor(Math.random() * videoUrls.length)];
+    var video = bv.videoEl;
+    while (video.firstChild) {
+        video.removeChild(video.firstChild);
+    }
+    var source = document.createElement('source');
+    source.src = url;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    bv.onLoadCalled = false;
+    video.load();
+    video.play();
+});
+
 $('.menu a').click(function () {
     target = $(this).attr('goto');
     switchTo(target);

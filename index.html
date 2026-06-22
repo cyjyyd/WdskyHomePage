@@ -30,8 +30,14 @@
         #background_video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover; height: 100%; width: 100%; z-index: -9999;}
         #video_cover {position: absolute; width: 100%; height: 100%; background: url(''); background-size: cover; background-position: center;}
         #overlay {position: absolute; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0,0,0,0.5);}
-        #video_controls {position: absolute; left: 96%; top: 92%; transform: translate(-50%, 0);}
-        #mute img {width: 23px; height: 23px; background: url('img/blank.png') no-repeat; background-size: cover; background-position: center;}
+        #video_controls {position: absolute; right: 16px; bottom: 24px; display: flex; align-items: center; gap: 12px; z-index: 10;}
+        #video_controls span {width: 24px; height: 24px; cursor: pointer; opacity: 0.75; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center;}
+        #video_controls span:hover {opacity: 1;}
+        #video_controls span i {color: #fff; font-size: 18px; text-shadow: 0 0 4px rgba(0,0,0,0.8);}
+        #volume{position:relative}
+        #volume-slider{display:none;position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:100px;height:4px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,.3);border-radius:2px;outline:none;cursor:pointer}
+        #volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,.5)}
+        #volume-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,.5)}
     </style>
        <style type="text/css">
         a:link {color:#FFFFFF;}      /* 未访问链接*/
@@ -47,8 +53,14 @@
         #background_video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover; height: 100%; width: 100%; z-index: -9999;}
         #video_cover {position: absolute; width: 100%; height: 100%; background: url(''); background-size: cover; background-position: center;}
         #overlay {position: absolute; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0,0,0,0.5);}
-        #video_controls {position: absolute; left: 96%; top: 92%; transform: translate(-50%, 0);}
-        #mute img {width: 23px; height: 23px; background: url('img/blank.png') no-repeat; background-size: cover; background-position: center;}
+        #video_controls {position: absolute; right: 16px; bottom: 24px; display: flex; align-items: center; gap: 12px; z-index: 10;}
+        #video_controls span {width: 24px; height: 24px; cursor: pointer; opacity: 0.75; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center;}
+        #video_controls span:hover {opacity: 1;}
+        #video_controls span i {color: #fff; font-size: 18px; text-shadow: 0 0 4px rgba(0,0,0,0.8);}
+        #volume{position:relative}
+        #volume-slider{display:none;position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:100px;height:4px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,.3);border-radius:2px;outline:none;cursor:pointer}
+        #volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,.5)}
+        #volume-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,.5)}
     </style>
 </head>
 
@@ -58,8 +70,15 @@
       <div id="video_cover" style="display: none;"></div>
       <div id="overlay"></div>
       <div id="video_controls">
-        <span id="mute" style="background-repeat: no-repeat; background-image: url(&quot;img/mute.png&quot;);">
-          <img src="img/blank.png">
+        <span id="fold" title="折叠内容">
+          <i class="fa fa-compress"></i>
+        </span>
+        <span id="shuffle" title="换一个视频">
+          <i class="fa fa-random"></i>
+        </span>
+        <span id="volume" title="音量调节">
+          <i class="fa fa-volume-off"></i>
+          <input type="range" id="volume-slider" min="0" max="100" value="0">
         </span>
       </div>
       
@@ -226,13 +245,9 @@
         </footer>
     
     </main>
-    <script src="js/main.js"></script>
         </section>
     <script src="js/bideo.js"></script>
     <script>
-    (function () {
-    var bv = new Bideo();
-    //视频背景直链数组 rain 心火
     var videoUrls = [
         'https://cdn.wdsky.top/doyoulikerain.mp4',
         'https://cdn.wdsky.top/BV1QWPqedE89-heaven-dungeon.mp4',
@@ -242,34 +257,23 @@
         'https://cdn.wdsky.top/BV14X4y1m7CQ-YourName.mp4'
         ];
     var videoUrl = videoUrls[Math.floor(Math.random()*videoUrls.length)];
+    var bv = new Bideo();
     bv.init({
-      // Video元素
       videoEl: document.querySelector('#background_video'),
-      // 容器元素
       container: document.querySelector('body'),
-      // 自适应调整
       resize: true,
-      // autoplay: false,
-      muteButton: document.querySelector('#mute'),
-      // 静音图标
-      _muteImage: 'img/mute.png',
-      // 取消静音图标
-      _unmuteImage: 'img/unmute.png',
-      // 加载视频源, 根据实际业务更换自己的视频源文件
       src: [
         {
           src: videoUrl,
           type: 'video/mp4'
         }
       ],
-      // 一旦视频加载后即将视频封面隐藏
       onLoad: function () {
         document.querySelector('#video_cover').style.display = 'none';
-        document.querySelector('#mute').style.backgroundImage = "url('img/mute.png')";
       }
     });
-  }());
   </script>
+    <script src="js/main.js"></script>
 </div>
  
 </body>

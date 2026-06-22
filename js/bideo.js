@@ -54,8 +54,10 @@
       // Fired when enough has been buffered to begin the video
       // self.videoEl.readyState === 4 (HAVE_ENOUGH_DATA)
       self.videoEl.addEventListener('canplay', function () {
-        // Play the video when enough has been buffered
-        self.opt.onLoad && self.opt.onLoad();
+        if (!self.onLoadCalled) {
+          self.opt.onLoad && self.opt.onLoad();
+          self.onLoadCalled = true;
+        }
         if (self.opt.autoplay !== false) self.videoEl.play();
       });
 

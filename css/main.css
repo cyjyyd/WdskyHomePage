@@ -21,9 +21,9 @@ body{font-family:Lucida Grande,Lucida Sans Unicode,Lucida,Helvetica Neue,Helveti
 .bak,body{height:100%;background-size:cover}
 .bak{width:100%;position:fixed;left:0;top:0}
 main{position:relative}
-main .content{display:flex;margin:2em 1em;background:hsla(0,0%,100%,.8);text-align:center;border-radius:5px;animation:content .5s 2.2s both;box-shadow:0 0 20px rgba(0,0,0,.2);overflow:hidden;width:50em;height:30em}
+main .content{display:flex;margin:2em 1em;background:rgba(255,255,255,.25);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-align:center;border-radius:5px;animation:content .5s 2.2s both;box-shadow:0 8px 32px rgba(0,0,0,.25);overflow:hidden;width:50em;height:30em;border:1px solid rgba(255,255,255,.18)}
 /* Left Box */
-.left{width:20%;background:rgba(0,187,255,.7);padding:1em;display:flex;flex-direction:column}
+.left{width:20%;background:rgba(0,187,255,.35);padding:1em;display:flex;flex-direction:column;text-shadow:0 1px 3px rgba(0,0,0,.3)}
 .left .avatar img{border-radius:100%;border:5px solid #fff}
 .left .menu{margin-top:2em;flex:1}
 .left .menu li{margin-top:1em}
@@ -93,4 +93,7 @@ footer #hitokoto{text-shadow:2px 1px 2px #666}
     #home p{margin-top:3em;font-size:1em}
     #donate h1{margin-top:.2em;font-size:1.5em}
     #donate .donate-img-box{margin:1.3em auto 1em;max-width:17em;max-height:13.5em}
-    #donate .donate-img-box img{margin:.1em}
+    #donate .donate-img-box img{margin:.1em}}
+/* Fold */
+#overlay,#main_content{transition:opacity .5s ease}
+body.folded #overlay,body.folded #main_content{opacity:0;pointer-events:none}
