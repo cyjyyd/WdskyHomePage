@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>万毒不侵</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="keywords" content="万毒不侵,WD,主页">
+    <meta name="description" content="万毒不侵的个人主页">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn.wdsky.top/favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/aplayer.min.js"></script>
+    <style type="text/css">
+        a:link {color:#FFFFFF;}      /* 未访问链接*/
+        a:visited {color:#FFFFFF;}  /* 已访问链接 */
+        a:hover {color:#00FBFF;}  /* 鼠标移动到链接上 */
+        a:active {color:#0000FF;}  /* 鼠标点击时 */
+    </style>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <style>
+        * {margin: 0; padding: 0;}
+        html, body {width: 100%; height: 100%; overflow: hidden;}
+        
+        #background_video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover; height: 100%; width: 100%; z-index: -9999;}
+        #video_cover {position: absolute; width: 100%; height: 100%; background: url(''); background-size: cover; background-position: center;}
+        #overlay {position: absolute; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0,0,0,0.5);}
+        #video_controls {position: absolute; left: 96%; top: 92%; transform: translate(-50%, 0);}
+        #mute img {width: 23px; height: 23px; background: url('img/blank.png') no-repeat; background-size: cover; background-position: center;}
+    </style>
+       <style type="text/css">
+        a:link {color:#FFFFFF;}      /* 未访问链接*/
+        a:visited {color:#FFFFFF;}  /* 已访问链接 */
+        a:hover {color:#00FBFF;}  /* 鼠标移动到链接上 */
+        a:active {color:#0000FF;}  /* 鼠标点击时 */
+    </style>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <style>
+        * {margin: 0; padding: 0;}
+        html, body {width: 100%; height: 100%; overflow: hidden;}
+        
+        #background_video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover; height: 100%; width: 100%; z-index: -9999;}
+        #video_cover {position: absolute; width: 100%; height: 100%; background: url(''); background-size: cover; background-position: center;}
+        #overlay {position: absolute; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0,0,0,0.5);}
+        #video_controls {position: absolute; left: 96%; top: 92%; transform: translate(-50%, 0);}
+        #mute img {width: 23px; height: 23px; background: url('img/blank.png') no-repeat; background-size: cover; background-position: center;}
+    </style>
+</head>
+
+<body>
+  <div id="container">
+      <video id="background_video" loop="" muted="">你的浏览器好像不支持内嵌视频诶，换个浏览器吧~</video>
+      <div id="video_cover" style="display: none;"></div>
+      <div id="overlay"></div>
+      <div id="video_controls">
+        <span id="mute" style="background-repeat: no-repeat; background-image: url(&quot;img/mute.png&quot;);">
+          <img src="img/blank.png">
+        </span>
+      </div>
+      
+      <section id="main_content">
+    <div class="loading" style="display: none;">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    
+    <main>
+        <div class="content">
+            <div class="left">
+                <div class="avatar">
+                    <img src="https://cdn.wdsky.top/favicon.ico">
+                </div>
+                <ul class="menu">
+                    <li>
+                        <a goto="#home" class="active">主页</a>
+                    </li>
+                    <li>
+                        <a goto="#archives">博客</a>
+                    </li>
+                    <li>
+                        <a goto="#contact">联系</a>
+                    </li>
+                    <li>
+                        <a goto="#donate">捐赠</a>
+                    </li>
+                </ul>
+                <div class="copyright">
+                    Made with
+                    <i class="fa fa-heart"></i> by
+                    <br>
+                    <a href="https://fly.moe" target="_blank">Fly</a> & <a href="https://vov.moe" target="_blank">TJ</a>
+					<br>
+					Mod by WanDu
+                </div>
+            </div>
+            <div class="right">
+                <section id="home" class="active">
+                    <h1>万毒不侵&nbsp;</h1>
+                    <p>
+                        我，万毒不侵 WD ，是一只菜狗<br>
+                        麻辣仙人 / 微疯の虫 / 全沾攻城逝<br>
+                        75%特别能吃苦 / 社恐宅 / VR绝地武士 / 2.5次元<br>
+                        J.C.STAFF / camellia / 节奏光剑 / CSGO / MuseDash<br>
+                        镰池和马 / 魔法禁书目录 / 新海诚 / 你的名字<a href="https://blog.wdsky.top/" target="_blank"><font color="black">...</font></a><br>
+                        <br>
+                        <br>
+                        『 救赎之道，就在其中 』<br>
+                        <br>
+                        # SALVATION LIES WITHIN #
+                    </p>
+                </section>
+                <section id="archives">
+                  <h1>近期文章</h1>
+                    <ul class="archive-list">
+                        <li><a href="https://blog.wdsky.top">如果文章长时间不加载，请点此前往博客</a></li>
+                    </ul>
+                </section>
+                <section id="contact">
+                    <h1>捕捉方式</h1>
+                <div class="items">
+                    <a href="https://blog.wdsky.top" target="_blank" rel="noopener">
+                        <i class="fa fa-home"></i>
+                        <span>Blog</span>
+                    </a>
+                    <a href="https://github.com/cyjyyd" target="_blank" rel="noopener">
+                        <i class="fa fa-github"></i>
+                        <span>Github</span>
+                    </a>
+                    <a href="tencent://message/?uin=842590128" target="_blank" rel="noopener">
+                        <i class="fa fa-qq"></i>
+                        <span>QQ</span>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100084117859979" target="_blank" rel="noopener">
+                        <i class="fa fa-facebook-official"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://t.me/CloudYearJet" target="_blank" rel="noopener">
+                        <i class="fa fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                </div>
+                </section>
+            <section id="donate">
+                <h1>拯救吃土的 万毒不侵</h1>
+                <p>
+                    <br>
+                    常言道，这个世界上最难治疗的病，莫过于穷病<br>
+                    So，救救孩纸吧！。<br>
+                    <br>BTC地址：33C59jRgoTJycjy4ybz8cXzV8wy1bVaDHU
+		    <br>ETH地址：0xCDa009275902928ab15e0f8276dE34F45a453936
+                </p>
+            </section>
+            </div>
+        </div>
+        <footer>
+        <br />
+        <p id="hitokoto">Loading...</p>
+        <br />
+        
+        
+        <div id="hitokoto">
+  <div>
+    
+    <!--下面是运行时间统计代码-->
+    <script>
+        function secondToDate(second) {
+            if (!second) {
+                    return 0;
+                    }
+            var time = new Array(0, 0, 0, 0, 0);
+            if (second >= 365 * 24 * 3600) {
+                time[0] = parseInt(second / (365 * 24 * 3600));
+                second %= 365 * 24 * 3600;
+                }
+            if (second >= 24 * 3600) {
+                time[1] = parseInt(second / (24 * 3600));
+                second %= 24 * 3600;
+                }
+            if (second >= 3600) {
+                time[2] = parseInt(second / 3600);
+                second %= 3600;
+                }
+            if (second >= 60) {
+                time[3] = parseInt(second / 60);
+                second %= 60;
+                }
+            if (second > 0) {
+                time[4] = second;
+                }
+            return time;
+        }
+    </script>
+    <script type="text/javascript" language="javascript">
+        function setTime() {
+            //下面是建站时间，月份需要-1
+            var create_time = Math.round(new Date(Date.UTC(2020, 10, 25, 9, 0, 0)).getTime() / 1000);
+            var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+            currentTime = secondToDate((timestamp - create_time));
+            currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
+                    + currentTime[2] + '时' + currentTime[3] + '分'
+                    + currentTime[4] + '秒';
+            document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+        }
+        setInterval(setTime, 1000);
+    </script>
+    <span>在风雨飘摇中度过<span id="htmer_time"></span></span>
+    <!--运行时间代码结束位置-->
+    
+    | <a href="https://blog.wdsky.top/sitemap.xml" target="_blank">站点地图</a>
+  </div>
+  <div>
+    <a href="https://stats.wdsky.top/" target="_blank">服务器运行状态</a>
+  </div>
+</div>
+        <br/>
+        </footer>
+    
+    </main>
+    <script src="js/main.js"></script>
+        </section>
+    <script src="js/bideo.js"></script>
+    <script>
+    (function () {
+    var bv = new Bideo();
+    //视频背景直链数组 rain 心火
+    var videoUrls = [
+        'https://cdn.wdsky.top/doyoulikerain.mp4',
+        'https://cdn.wdsky.top/BV1QWPqedE89-heaven-dungeon.mp4',
+        'https://cdn.wdsky.top/BV1SMQUYpEjT-superhatred.mp4',
+        'https://cdn.wdsky.top/av95473051.mp4',
+        'https://cdn.wdsky.top/BV1is411w7fb.mp4',
+        'https://cdn.wdsky.top/BV14X4y1m7CQ-YourName.mp4'
+        ];
+    var videoUrl = videoUrls[Math.floor(Math.random()*videoUrls.length)];
+    bv.init({
+      // Video元素
+      videoEl: document.querySelector('#background_video'),
+      // 容器元素
+      container: document.querySelector('body'),
+      // 自适应调整
+      resize: true,
+      // autoplay: false,
+      muteButton: document.querySelector('#mute'),
+      // 静音图标
+      _muteImage: 'img/mute.png',
+      // 取消静音图标
+      _unmuteImage: 'img/unmute.png',
+      // 加载视频源, 根据实际业务更换自己的视频源文件
+      src: [
+        {
+          src: videoUrl,
+          type: 'video/mp4'
+        }
+      ],
+      // 一旦视频加载后即将视频封面隐藏
+      onLoad: function () {
+        document.querySelector('#video_cover').style.display = 'none';
+        document.querySelector('#mute').style.backgroundImage = "url('img/mute.png')";
+      }
+    });
+  }());
+  </script>
+</div>
+ 
+</body>
+</html>
+
